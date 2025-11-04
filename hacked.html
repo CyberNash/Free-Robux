@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECURITY ALERT</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display.swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'VT323', monospace;
+            
+            /* --- UPDATED BACKGROUND CODE --- */
+            background-color: #000;
+            /* New working GIF URL and dark overlay */
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('./assets/background-wallpaper.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* --- END OF UPDATED CODE --- */
+
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        .hacked-container {
+            border: 2px dashed #ff0000;
+            background-color: rgba(17, 17, 17, 0.9);
+            backdrop-filter: blur(4px);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+        .warning-icon {
+            font-size: 4rem;
+            color: #ff0000;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #ff0000;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 10px 0;
+            text-shadow: 0 0 5px #ff0000;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #dcdcdc;
+        }
+        .data-box {
+            background-color: #2a2a2a;
+            border: 1px solid #00ff00;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: left;
+            font-size: 1.6rem;
+            word-wrap: break-word;
+        }
+        .lesson {
+            background-color: #002244;
+            border: 1px solid #00a2ff;
+            color: #fff;
+            padding: 15px;
+            margin-top: 30px;
+            font-size: 1.4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="hacked-container">
+        <div class="warning-icon">⚠️</div>
+        <h1>Access Denied</h1>
+        <p>This was a phishing attack simulation.</p>
+        <p>If this were a real attack, the data you entered would have been stolen.</p>
+        
+        <div class="data-box">
+            &gt; Credentials Captured:<br>
+            &gt; Email: <span id="email-display">[not found]</span><br>
+            &gt; Password: <span id="password-display">[not found]</span>
+        </div>
+        
+        <div class="lesson">
+            <strong>THE LESSON:</strong> Always check the URL in your browser's address bar before you sign in. Make sure it matches the real website!
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const email = sessionStorage.getItem('stolenEmail');
+            const password = sessionStorage.getItem('stolenPassword');
+            const emailDisplay = document.getElementById('email-display');
+            const passwordDisplay = document.getElementById('password-display');
+            if (email && password) {
+                emailDisplay.textContent = email;
+                passwordDisplay.textContent = password;
+            } else {
+                emailDisplay.textContent = "[No data was captured]";
+                passwordDisplay.textContent = "[No data was captured]";
+            }
+            sessionStorage.removeItem('stolenEmail');
+            sessionStorage.removeItem('stolenPassword');
+        };
+    </script>
+</body>
+</html>
